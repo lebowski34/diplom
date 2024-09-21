@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование задачи</title>
+</head>
+<body>
+    <h1>Редактирование задачи</h1>
+    <form action="/tasks/edit/{{ task_id }}/" method="post">
+        <input type="text" name="title" value="{{ task.title }}">
+        <button type="submit">Сохранить</button>
+    </form>
+    <button><a href="/tasks/">Назад к списку задач</a></button>
+</body>
+</html>

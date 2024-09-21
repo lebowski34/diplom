@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} - {% if task.completed %}Done{% else %}Pending{% endif %}
+            <a href="{% url 'edit_task' task.id %}">Редактировать</a>
+            <a href="{% url 'delete_task' task.id %}">Удалить</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_task' %}"><button>Новая задача</button></a>
+
+<a href="{% url 'home' %}"><button>На главную</button></a>
+{% endblock %}

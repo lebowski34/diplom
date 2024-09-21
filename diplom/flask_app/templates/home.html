@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+
+    {% if current_user %}
+        <p>Привет, {{ current_user }}!</p>
+    {% else %}
+        <p>Вы не вошли в систему.</p>
+    {% endif %}
+
+    <p>Выберите действие:</p>
+    <ul>
+        <li><a href="{{ url_for('task_list') }}">Список задач</a></li>
+        <li><a href="{{ url_for('product_list') }}">Список продуктов</a></li>
+        <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+        <li><a href="{{ url_for('user_list') }}">Список пользователей</a></li>
+    </ul>
+
+    <h2>Список всех пользователей:</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% else %}
+            <li>Нет зарегистрированных пользователей</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

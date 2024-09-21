@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить пользователя</title>
+</head>
+<body>
+    <h1>Добавить пользователя</h1>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Имя пользователя" required>
+        <button type="submit">Добавить</button>
+    </form>
+    <a href="{{ url_for('user_list') }}">Назад к списку пользователей</a>
+</body>
+</html>

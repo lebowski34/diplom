@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пользователей</title>
+</head>
+<body>
+    <h1>Список пользователей</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% empty %}
+            <li>Пользователи отсутствуют.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}"><button>На главную</button></a>
+</body>
+</html>

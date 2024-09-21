@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список продуктов</title>
+</head>
+<body>
+    <h1>Список продуктов</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.title }} - {{ product.price }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_product') }}">Добавить продукт</a>
+    <br>
+    <a href="{{ url_for('home') }}">Назад на главную</a>
+</body>
+</html>

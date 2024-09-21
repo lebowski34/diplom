@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить задачу</title>
+</head>
+<body>
+    <h1>Добавить задачу</h1>
+    <form action="/tasks/add/" method="post">
+        <label for="title">Название задачи:</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">Добавить</button>
+    </form>
+    <button><a href="/tasks/">Назад к списку задач</a></button>
+    <button><a href="/">На главную</a></button>
+</body>
+</html>

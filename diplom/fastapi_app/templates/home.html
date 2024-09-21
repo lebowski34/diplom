@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать, {{ username }}!</h1>
+    <p>Список пользователей:</p>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% else %}
+            <li>Нет зарегистрированных пользователей</li>
+        {% endfor %}
+    </ul>
+    <p>Выберите действие:</p>
+    <ul>
+        <li><a href="/tasks/">Список задач</a></li>
+        <li><a href="/tasks/add/">Добавить задачу</a></li>
+        <li><a href="/register/">Регистрация</a></li>
+    </ul>
+</body>
+</html>

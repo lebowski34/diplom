@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список задач</title>
+</head>
+<body>
+    <h1>Список задач</h1>
+    <ul>
+        {% if tasks %}
+            {% for task in tasks %}
+                <li>{{ task.title }} <a href="{{ url_for('edit_task', task_id=loop.index0) }}">Редактировать</a> <a href="{{ url_for('delete_task', task_id=loop.index0) }}">Удалить</a></li>
+            {% endfor %}
+        {% else %}
+            <li>Задачи отсутствуют.</li>
+        {% endif %}
+    </ul>
+    <a href="{{ url_for('add_task') }}">Добавить задачу</a>
+    <br>
+    <a href="{{ url_for('home') }}">Назад на главную</a>
+</body>
+</html>

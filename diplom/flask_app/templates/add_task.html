@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить задачу</title>
+</head>
+<body>
+    <h1>Добавить задачу</h1>
+    <form method="POST">
+        <input type="text" name="title" placeholder="Название задачи" required>
+        <button type="submit">Добавить</button>
+    </form>
+    <a href="{{ url_for('task_list') }}">Назад к списку задач</a>
+</body>
+</html>
