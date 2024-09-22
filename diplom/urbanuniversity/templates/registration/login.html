@@ -22,5 +22,8 @@
     {% if next %}
         <input type="hidden" name="next" value="{{ next }}">
     {% endif %}
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>  <!-- Добавлено отображение ошибки -->
+    {% endif %}
 </body>
 </html>

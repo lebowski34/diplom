@@ -10,10 +10,10 @@
         {% for task in tasks %}
             <li>
                 {{ task.title }}
-                <form action="/tasks/edit/{{ loop.index0 }}" method="get" style="display:inline;">
+                <form action="/tasks/edit/{{ task.id }}" method="get" style="display:inline;">
                     <button type="submit">Редактировать</button>
                 </form>
-                <form action="/tasks/delete/{{ loop.index0 }}" method="post" style="display:inline;">
+                <form action="/tasks/delete/{{ task.id }}" method="post" style="display:inline;">
                     <button type="submit">Удалить</button>
                 </form>
             </li>

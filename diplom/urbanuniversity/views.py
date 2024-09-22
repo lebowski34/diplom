@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task, Products
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
 from .forms import UserRegistrationForm
 
 User = get_user_model()
@@ -14,7 +14,7 @@ def add_task(request):
         title = request.POST['title']
         Task.objects.create(title=title)
         return redirect('task_list')
-    return render(request, 'home.html')
+    return render(request, 'add_task.html')
 
 def edit_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
@@ -22,7 +22,8 @@ def edit_task(request, task_id):
         task.title = request.POST['title']
         task.save()
         return redirect('task_list')
-    return render(request, 'user_list.html', {'task': task})
+    return render(request, 'edit_task.html', {'task': task})
+
 
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
@@ -31,7 +32,8 @@ def delete_task(request, task_id):
 
 def product_list(request):
     products = Products.objects.all()
-    return render(request, 'products/register.html', {'products': products})
+    return render(request, 'products/product_list.html', {'products': products})
+
 
 def user_list(request):
     users = User.objects.all()
@@ -50,4 +52,18 @@ def register(request):
     return render(request, 'registration/register.html', {'form': form})
 
 def home(request):
-    return render(request, 'home.html')
+    user = request.user
+    print(user.is_authenticated)
+    return render(request, 'home.html', {'user': user})
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'registration/login.html', {'error': 'Неверные имя пользователя или пароль.'})
+    return render(request, 'registration/login.html')

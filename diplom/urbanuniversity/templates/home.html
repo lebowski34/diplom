@@ -6,7 +6,7 @@
     <title>Главная страница</title>
 </head>
 <body>
-    <h1>Добро пожаловать на главную страницу!</h1>
+   <h1>Добро пожаловать{% if user.is_authenticated %}, {{ user.username }}{% endif %}!</h1>
     <div>
         <a href="{% url 'task_list' %}"><button>Список задач</button></a>
         <a href="{% url 'product_list' %}"><button>Список продуктов</button></a>

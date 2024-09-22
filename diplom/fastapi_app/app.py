@@ -15,6 +15,7 @@ tasks = []
 users = []
 
 class Task(BaseModel):
+    id: int  # Добавлен идентификатор
     title: str
     completed: bool = False
 
@@ -41,7 +42,8 @@ async def get_add_task(request: Request):
 
 @app.post("/tasks/add/")
 async def add_task(request: Request, title: str = Form(...)):
-    tasks.append(Task(title=title))
+    task_id = len(tasks)  # Генерация идентификатора
+    tasks.append(Task(id=task_id, title=title))
     return RedirectResponse(url="/tasks", status_code=303)
 
 @app.get("/tasks/", response_class=HTMLResponse)
@@ -60,6 +62,6 @@ async def update_task(request: Request, task_id: int, title: str = Form(...)):
 
 @app.post("/tasks/delete/{task_id}/")
 async def delete_task(request: Request, task_id: int):
-    if task_id < len(tasks):
+    if 0 <= task_id < len(tasks):  # Проверка на существование задачи
         tasks.pop(task_id)
     return RedirectResponse(url="/tasks", status_code=303)

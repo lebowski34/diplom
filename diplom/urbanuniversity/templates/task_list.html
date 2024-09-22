@@ -4,7 +4,7 @@
 <ul>
     {% for task in tasks %}
         <li>
-            {{ task.title }} - {% if task.completed %}Done{% else %}Pending{% endif %}
+            {{ task.title }}
             <a href="{% url 'edit_task' task.id %}">Редактировать</a>
             <a href="{% url 'delete_task' task.id %}">Удалить</a>
         </li>

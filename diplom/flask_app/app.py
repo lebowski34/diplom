@@ -7,19 +7,16 @@ tasks = []
 users = []
 products = []
 
-
 # Главная страница с приветствием пользователя
 @app.route('/')
 def home():
     current_user = session.get('username')  # Получаем имя текущего пользователя из сессии
     return render_template('home.html', current_user=current_user, users=users)  # Передаем список пользователей
 
-
 # Задачи
 @app.route('/tasks/')
 def task_list():
     return render_template('task_list.html', tasks=tasks)
-
 
 @app.route('/tasks/add/', methods=['GET', 'POST'])
 def add_task():
@@ -29,7 +26,6 @@ def add_task():
         return redirect(url_for('task_list'))
     return render_template('add_task.html')
 
-
 @app.route('/tasks/edit/<int:task_id>/', methods=['GET', 'POST'])
 def edit_task(task_id):
     task = tasks[task_id]
@@ -38,18 +34,15 @@ def edit_task(task_id):
         return redirect(url_for('task_list'))
     return render_template('edit_task.html', task=task, task_id=task_id)
 
-
 @app.route('/tasks/delete/<int:task_id>/')
 def delete_task(task_id):
     tasks.pop(task_id)
     return redirect(url_for('task_list'))
 
-
 # Пользователи
 @app.route('/users/')
 def user_list():
     return render_template('user_list.html', users=users)
-
 
 @app.route('/users/add/', methods=['GET', 'POST'])
 def add_user():
@@ -60,7 +53,6 @@ def add_user():
         users.append({'username': username})
         return redirect(url_for('user_list'))
     return render_template('add_user.html')
-
 
 # Регистрация
 @app.route('/register/', methods=['GET', 'POST'])
@@ -88,12 +80,10 @@ def register():
 
     return render_template('register.html')
 
-
 # Продукты
 @app.route('/products/')
 def product_list():
-    return render_template('register.html', products=products)
-
+    return render_template('product_list.html', products=products)  # Исправлено
 
 @app.route('/products/add/', methods=['GET', 'POST'])
 def add_product():
@@ -103,7 +93,6 @@ def add_product():
         products.append({'title': title, 'price': price})
         return redirect(url_for('product_list'))
     return render_template('add_product.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)

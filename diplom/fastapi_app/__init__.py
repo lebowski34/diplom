@@ -11,4 +11,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from fastapi_app import main
+
